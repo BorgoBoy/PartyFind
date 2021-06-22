@@ -29,14 +29,20 @@ router.get('/:id', (req, res) => {
                 "error": "Errore"
             })
         } else {
-            const {name, description, maxplayer, edition, author} = campaign
-            res.json({
-                "name": name,
-                "description": description,
-                "maxplayer": maxplayer,
-                "edition": edition,
-                "author": author
-            })
+            if (campaign) {
+                const {name, description, maxplayer, edition, author} = campaign
+                res.json({
+                    "name": name,
+                    "description": description,
+                    "maxplayer": maxplayer,
+                    "edition": edition,
+                    "author": author
+                })
+            } else {
+                res.json({
+                    "error": "doesn't exist"
+                })
+            }
         }
     })
 })

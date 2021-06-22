@@ -25,7 +25,7 @@ const userRoute = require('./routes/user')
 //app.use('/'. indexRoute)
 app.use('/post', postRoute)
 //app.use('/auth', authRoute)
-//app.use('/user', userRoute)
+app.use('/user', userRoute)
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`)
