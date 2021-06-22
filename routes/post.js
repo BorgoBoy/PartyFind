@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
                 })
             } else {
                 res.json({
-                    "error": "doesn't exist"
+                    "error": "not found"
                 })
             }
         }
