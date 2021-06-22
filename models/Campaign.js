@@ -5,6 +5,7 @@ const campaignSchema = new Schema({
     name: String,
     description: String,
     maxplayer: Number,
+    edition: String,
     author: String
 })
 

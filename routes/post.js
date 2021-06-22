@@ -8,9 +8,9 @@ router.get('/add', (req, res) => {
 })
 
 router.post('/add', (req, res) => {
-    const {name, description, maxplayer, author} = req.body
+    const {name, description, maxplayer, edition, author} = req.body
     try {
-        new campaignSchema({ name, description, maxplayer, author }).save()
+        new campaignSchema({ name, description, maxplayer, edition, author }).save()
     } catch (err) {
         res.json({
             "error": "Error"
@@ -29,11 +29,12 @@ router.get('/:id', (req, res) => {
                 "error": "Errore"
             })
         } else {
-            const {name, description, maxplayer, author} = campaign
+            const {name, description, maxplayer, edition, author} = campaign
             res.json({
                 "name": name,
                 "description": description,
                 "maxplayer": maxplayer,
+                "edition": edition,
                 "author": author
             })
         }
@@ -41,10 +42,10 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/:id/edit', (req, res) => {
-    const {name, description, maxplayer} = req.body
+    const {name, description, maxplayer, edition} = req.body
 
         //TODO if parms == null don't update
-    campaignSchema.updateOne({ _id: req.params.id }, {name, description, maxplayer}, (err) => {
+    campaignSchema.updateOne({ _id: req.params.id }, {name, description, maxplayer, edition}, (err) => {
         if (err) {
             res.json({
                 "error": "Errore"
